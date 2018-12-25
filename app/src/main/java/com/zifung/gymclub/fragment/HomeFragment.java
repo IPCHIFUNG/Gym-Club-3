@@ -84,25 +84,25 @@ public class HomeFragment extends Fragment {
         mDatas = new ArrayList<>();
         RecyclerList fl;
 
-        fl=new RecyclerList("上肢拉伸", "6分钟 · k1");
+        fl=new RecyclerList("上肢拉伸", "6分钟 · k1", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("腹肌撕裂者初级", "9分钟 · k2");
+        fl=new RecyclerList("腹肌撕裂者初级", "9分钟 · k2", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("小腿按摩", "15分钟 · k1");
+        fl=new RecyclerList("小腿按摩", "15分钟 · k1", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("躯干拉伸", "8分钟 · k1");
+        fl=new RecyclerList("躯干拉伸", "8分钟 · k1", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("瘦腿训练", "9分钟 · k2");
+        fl=new RecyclerList("瘦腿训练", "9分钟 · k2", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("腹肌撕裂者进阶", "11分钟 · k3");
+        fl=new RecyclerList("腹肌撕裂者进阶", "11分钟 · k3", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("马甲线养成", "12分钟 · k3");
+        fl=new RecyclerList("马甲线养成", "12分钟 · k3", "17610097128");
         mDatas.add(fl);
-        fl=new RecyclerList("一字马竖叉", "13分钟 · k1");
+        fl=new RecyclerList("一字马竖叉", "13分钟 · k1", "17610097128");
         mDatas.add(fl);
 
 
-        recycleAdapter = new MyRecyclerAdatper(getContext(), mDatas);
+        recycleAdapter = new MyRecyclerAdatper(getContext(), mDatas, getActivity());
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

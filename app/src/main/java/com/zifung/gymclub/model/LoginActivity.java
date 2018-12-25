@@ -39,6 +39,16 @@ public class LoginActivity extends Activity {
     public void login_btn_clicked(View view) {
         String username = et_username.getText().toString();
         String password = et_password.getText().toString();
+
+        user_info.setUsername(username);
+        user_info.setNickname(password);
+
+        Intent intent = new Intent(  LoginActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        LoginActivity.this.finish();
+
+        /*
         try {
             Service service = ServiceFactory.getService(Service.class);
             Call<UserBean> call = service.login(new PostUser(username, "", password));
@@ -76,7 +86,7 @@ public class LoginActivity extends Activity {
         } catch (Exception e) {
             Log.d("Error", e.getMessage());
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     public void sign_up_btn_clicked(View view) {

@@ -1,6 +1,8 @@
 package com.zifung.gymclub.util;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.zifung.gymclub.CourseActivity;
 import com.zifung.gymclub.list.RecyclerList;
 import com.zifung.gymclub.R;
+import com.zifung.gymclub.model.MainActivity;
 
 import java.util.List;
 
@@ -21,14 +25,17 @@ public class MyRecyclerAdatper extends RecyclerView.Adapter<MyRecyclerAdatper.My
     private View mHeaderView;
     private View mFooterView;
 
+    private Activity activity;
+
     public static final int TYPE_HEADER = 0;  //说明是带有Header的
     public static final int TYPE_FOOTER = 1;  //说明是带有Footer的
     public static final int TYPE_NORMAL = 2;  //说明是不带有header和footer的
 
 
-    public MyRecyclerAdatper(Context context, List<RecyclerList> datas){
+    public MyRecyclerAdatper(Context context, List<RecyclerList> datas, Activity activity){
         this.mContext=context;
         this.mDatas=datas;
+        this.activity = activity;
         inflater=LayoutInflater.from(mContext);
     }
 
@@ -74,6 +81,14 @@ public class MyRecyclerAdatper extends RecyclerView.Adapter<MyRecyclerAdatper.My
                 holder.course_name.setText(mDatas.get(position-1).getName());
                 holder.course_name.getPaint().setFakeBoldText(true);
                 holder.course_time.setText(mDatas.get(position-1).getTime());
+                holder.root_layout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(activity, CourseActivity.class);
+                        intent.putExtra("tel_number", mDatas.get(position-1).getTelNumber());
+                        activity.startActivity(intent);
+                    }
+                });
                 return;
             }
             return;
@@ -85,11 +100,13 @@ public class MyRecyclerAdatper extends RecyclerView.Adapter<MyRecyclerAdatper.My
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView course_name;
         TextView course_time;
+        View root_layout;
         View v;
         public MyViewHolder(View view) {
             super(view);
             course_name = (TextView) view.findViewById(R.id.tv_course_name);
             course_time = (TextView)view.findViewById(R.id.tv_course_time);
+            root_layout = view.findViewById(R.id.list_root_item);
             v = view;
         }
     }

@@ -18,5 +18,6 @@
     <string name="today_runtime">今日运动-分钟</string>
     <string name="no_more_information">-没有更多内容-</string>
     <string name="key_return"><![CDATA[< 返回]]></string>
+    <string name="title_activity_course">CourseActivity</string>
 
 </resources>
